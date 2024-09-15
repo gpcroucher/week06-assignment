@@ -1,21 +1,36 @@
 import "./App.css";
 import Cookie from "./components/Cookie.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   // we need a cookie button, an upgrade menu, and a couple of readouts for cookie count and cookies per second
-  const [myCounterState, setMyCounterState] = useState(0);
+  const [cookies, setCookies] = useState(0);
+  const [perSecond, setPerSecond] = useState(0);
+  const [perClick, setPerClick] = useState(1);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      tickCookie();
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  });
 
   return (
     <>
-      <Cookie handleClick={increaseCookieCount}></Cookie>
-      <p>{myCounterState}</p>
+      <Cookie handleClick={clickCookie}></Cookie>
+      <p>{cookies}</p>
     </>
   );
 
-  function increaseCookieCount() {
-    setMyCounterState(myCounterState + 1);
-    console.log("cookies increased");
+  function clickCookie() {
+    setCookies(cookies + perClick);
+  }
+
+  function tickCookie() {
+    setCookies(cookies + perSecond);
   }
 }
 
