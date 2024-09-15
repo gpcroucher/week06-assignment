@@ -1,5 +1,6 @@
 import "./App.css";
 import Cookie from "./components/Cookie.jsx";
+import UpgradeMenu from "./components/UpgradeMenu.jsx";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -22,6 +23,46 @@ function App() {
     <>
       <Cookie handleClick={clickCookie}></Cookie>
       <p>{cookies}</p>
+      <UpgradeMenu
+        upgrades={
+          /* dummy upgrades */ [
+            {
+              id: 1,
+              name: "Cookie Oven",
+              increase: 10,
+              cost: 100,
+            },
+            {
+              id: 2,
+              name: "Bakery",
+              increase: 100,
+              cost: 1000,
+            },
+          ]
+        }
+        statsIncreaser={increasePerSecond}
+        cookieSpender={spendCookies}
+      ></UpgradeMenu>
+      <UpgradeMenu
+        upgrades={
+          /* dummy upgrades */ [
+            {
+              id: 1,
+              name: "Grandma's Recipe",
+              increase: 1,
+              cost: 100,
+            },
+            {
+              id: 2,
+              name: "Batch Baking",
+              increase: 5,
+              cost: 1000,
+            },
+          ]
+        }
+        statsIncreaser={increasePerClick}
+        cookieSpender={spendCookies}
+      ></UpgradeMenu>
     </>
   );
 
@@ -31,6 +72,18 @@ function App() {
 
   function tickCookie() {
     setCookies(cookies + perSecond);
+  }
+
+  function increasePerClick(number) {
+    setPerClick(perClick + number);
+  }
+
+  function increasePerSecond(number) {
+    setPerSecond(perSecond + number);
+  }
+
+  function spendCookies(number) {
+    setCookies(cookies - number);
   }
 }
 
