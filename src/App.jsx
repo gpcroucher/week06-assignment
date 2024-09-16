@@ -24,6 +24,7 @@ function App() {
       <Cookie handleClick={clickCookie}></Cookie>
       <p>{cookies}</p>
       <UpgradeMenu
+        title="CPS Upgrades"
         upgrades={
           /* dummy upgrades */ [
             {
@@ -40,10 +41,12 @@ function App() {
             },
           ]
         }
+        cookies={cookies}
         statsIncreaser={increasePerSecond}
         cookieSpender={spendCookies}
       ></UpgradeMenu>
       <UpgradeMenu
+        title="Per Click Upgrades"
         upgrades={
           /* dummy upgrades */ [
             {

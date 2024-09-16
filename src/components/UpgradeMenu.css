@@ -1,0 +1,15 @@
+.upgradeMenu {
+  border: 1px solid brown;
+}
+.upgradeMenu h2 {
+  margin-left: 1svw;
+}
+
+.upgradeList {
+  display: flex;
+}
+
+.upgradeCard {
+  margin: 1svw;
+  border: 2px solid black;
+}
