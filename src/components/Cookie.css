@@ -5,7 +5,7 @@
   border-radius: 3px;
 }
 
-button:active {
+.cookieButton:active {
   height: 110px;
   width: 110px;
 }

@@ -9,7 +9,12 @@ export default function UpgradeCard(props) {
       props.statsIncreaser(upgrade.increase);
       console.log("Upgrade bought.");
     } else {
-      console.log("Not enough cookies to buy this upgrade.");
+      console.log(
+        "Not enough cookies to buy this upgrade. You have:",
+        props.cookies,
+        "and this upgrade costs",
+        upgrade.cost
+      );
     }
   }
 
