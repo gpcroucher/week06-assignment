@@ -8,14 +8,20 @@ const PER_SECOND_UPGRADES = [
   {
     id: 1,
     name: "Cookie Oven",
-    increase: 10,
+    increase: 1,
     cost: 100,
   },
   {
     id: 2,
     name: "Bakery",
-    increase: 100,
+    increase: 10,
     cost: 1000,
+  },
+  {
+    id: 3,
+    name: "Assembly Line",
+    increase: 100,
+    cost: 10000,
   },
 ];
 const PER_CLICK_UPGRADES = [
@@ -27,9 +33,15 @@ const PER_CLICK_UPGRADES = [
   },
   {
     id: 2,
-    name: "Batch Baking",
+    name: "Batch Cooking",
     increase: 5,
     cost: 1000,
+  },
+  {
+    id: 3,
+    name: "Titanium Baking Tray",
+    increase: 10,
+    cost: 10000,
   },
 ];
 
@@ -42,12 +54,16 @@ function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       tickCookie();
-      console.log("ticked");
     }, 1000);
 
     return () => {
       clearInterval(interval);
     };
+
+    function tickCookie() {
+      setCookies((cookies) => cookies + perSecond);
+      console.log(`Cookie ticked: ${perSecond} added`);
+    }
   }, [perSecond, perClick]);
 
   return (
@@ -68,12 +84,17 @@ function App() {
         statsIncreaser={increasePerClick}
         cookieSpender={spendCookies}
       />
+      <footer>
+        <a href="https://www.flaticon.com/free-icons" title="icons">
+          All icons created by Freepik - Flaticon
+        </a>
+      </footer>
     </>
   );
 
-  // changed this to an updater but didn't seem to fix the issue
   function clickCookie() {
-    setCookies(cookies + perClick);
+    setCookies((cookies) => cookies + perClick);
+    console.log(`Cookie clicked: ${perClick} added`);
   }
 
   function increasePerClick(number) {
@@ -86,11 +107,6 @@ function App() {
 
   function spendCookies(number) {
     setCookies(cookies - number);
-  }
-
-  function tickCookie() {
-    setCookies((cookies) => cookies + perSecond);
-    console.log(`Cookies ticked: ${perSecond} added`);
   }
 }
 

@@ -3,7 +3,9 @@ import "./Cookie.css";
 
 export default function Cookie(props) {
   return (
-    <button className={"cookieButton"} onClick={props.handleClick}></button>
+    <button className={"cookieButton"} onClick={props.handleClick}>
+      <img src="src/assets/cookiejar.png" alt="A cute cartoon cookie jar" />
+    </button>
   );
 }
 

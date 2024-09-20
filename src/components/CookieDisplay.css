@@ -1,0 +1,15 @@
+.cookie-display-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+}
+
+.cookie-display-container img {
+  height: 32px;
+  width: 32px;
+}
+
+.cookie-display-container p {
+  font-weight: bold;
+}

@@ -1,3 +1,15 @@
+import PropTypes from "prop-types";
+import "./CookieDisplay.css";
+
 export default function CookieDisplay(props) {
-  return <p>{props.cookies}</p>;
+  return (
+    <div className="cookie-display-container">
+      <img src="src/assets/cookie-tiny.png" alt="A cookie icon" />
+      <p>{props.cookies}</p>
+    </div>
+  );
 }
+
+CookieDisplay.propTypes = {
+  cookies: PropTypes.number,
+};
