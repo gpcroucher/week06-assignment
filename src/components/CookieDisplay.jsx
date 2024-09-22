@@ -6,11 +6,23 @@ export default function CookieDisplay(props) {
   return (
     <div className="cookie-display-container">
       <img src={cookieImage} alt="A cookie icon" />
-      <p>{props.cookies}</p>
+      <p className="cookie-readout-wide">
+        {props.cookies} · {props.perSecond} per second · {props.perClick} per
+        click
+      </p>
+      <p className="cookie-readout-narrow">
+        {props.cookies}
+        <br />
+        {props.perSecond} per second
+        <br />
+        {props.perClick} per click
+      </p>
     </div>
   );
 }
 
 CookieDisplay.propTypes = {
   cookies: PropTypes.number,
+  perSecond: PropTypes.number,
+  perClick: PropTypes.number,
 };

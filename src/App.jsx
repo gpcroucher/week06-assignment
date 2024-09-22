@@ -155,7 +155,11 @@ function App() {
     <>
       <div className="cookieJarAndDisplay">
         <Cookie handleClick={clickCookie} />
-        <CookieDisplay cookies={cookies} />
+        <CookieDisplay
+          cookies={cookies}
+          perSecond={perSecond}
+          perClick={perClick}
+        />
       </div>
       <div className="upgradeSection">
         <UpgradeMenu

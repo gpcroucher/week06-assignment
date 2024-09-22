@@ -13,3 +13,21 @@
 .cookie-display-container p {
   font-weight: bold;
 }
+
+.cookie-readout-wide {
+  display: block;
+}
+
+.cookie-readout-narrow {
+  display: none;
+}
+
+@media (min-width: 800px) {
+  .cookie-readout-wide {
+    display: none;
+  }
+
+  .cookie-readout-narrow {
+    display: block;
+  }
+}
