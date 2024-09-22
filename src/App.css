@@ -5,6 +5,7 @@
 body {
   background-color: antiquewhite;
   font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
+  margin: 0;
 }
 
 .cookieJarAndDisplay {
@@ -13,8 +14,18 @@ body {
   align-items: center;
 }
 
+.upgradeSection {
+  display: block;
+}
+
 @media (min-width: 800px) {
   .cookieJarAndDisplay {
     flex-direction: row;
+  }
+
+  .upgradeSection {
+    display: flex;
+    flex-direction: row;
+    gap: 1svw;
   }
 }

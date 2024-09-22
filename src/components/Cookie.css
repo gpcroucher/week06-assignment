@@ -2,3 +2,7 @@
   border: 0;
   background-color: transparent;
 }
+
+.cookieButton img {
+  width: 100%;
+}

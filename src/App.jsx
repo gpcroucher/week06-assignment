@@ -23,6 +23,36 @@ const PER_SECOND_UPGRADES = [
     increase: 100,
     cost: 10000,
   },
+  {
+    id: 4,
+    name: "Assembly Line",
+    increase: 1000,
+    cost: 100000,
+  },
+  {
+    id: 5,
+    name: "Assembly Line",
+    increase: 10000,
+    cost: 1000000,
+  },
+  {
+    id: 6,
+    name: "Assembly Line",
+    increase: 100000,
+    cost: 10000000,
+  },
+  {
+    id: 7,
+    name: "Assembly Line",
+    increase: 1000000,
+    cost: 100000000,
+  },
+  {
+    id: 8,
+    name: "Assembly Line",
+    increase: 10000000,
+    cost: 1000000000,
+  },
 ];
 const PER_CLICK_UPGRADES = [
   {
@@ -40,8 +70,38 @@ const PER_CLICK_UPGRADES = [
   {
     id: 3,
     name: "Titanium Baking Tray",
-    increase: 10,
+    increase: 25,
     cost: 10000,
+  },
+  {
+    id: 4,
+    name: "Secret Spices",
+    increase: 125,
+    cost: 100000,
+  },
+  {
+    id: 5,
+    name: "Space Age Flour",
+    increase: 625,
+    cost: 1000000,
+  },
+  {
+    id: 6,
+    name: "Nanotech Oven Mitts",
+    increase: 3125,
+    cost: 10000000,
+  },
+  {
+    id: 7,
+    name: "Secret Icing Tech",
+    increase: 15625,
+    cost: 10000000,
+  },
+  {
+    id: 8,
+    name: "AI Spatula",
+    increase: 78125,
+    cost: 1000000,
   },
 ];
 
@@ -97,20 +157,23 @@ function App() {
         <Cookie handleClick={clickCookie} />
         <CookieDisplay cookies={cookies} />
       </div>
-      <UpgradeMenu
-        title="CPS Upgrades"
-        upgrades={PER_SECOND_UPGRADES}
-        cookies={cookies}
-        statsIncreaser={increasePerSecond}
-        cookieSpender={spendCookies}
-      />
-      <UpgradeMenu
-        title="Per Click Upgrades"
-        upgrades={PER_CLICK_UPGRADES}
-        cookies={cookies}
-        statsIncreaser={increasePerClick}
-        cookieSpender={spendCookies}
-      />
+      <div className="upgradeSection">
+        <UpgradeMenu
+          title="CPS Upgrades"
+          upgrades={PER_SECOND_UPGRADES}
+          cookies={cookies}
+          statsIncreaser={increasePerSecond}
+          cookieSpender={spendCookies}
+        />
+        <UpgradeMenu
+          title="Per Click Upgrades"
+          upgrades={PER_CLICK_UPGRADES}
+          cookies={cookies}
+          statsIncreaser={increasePerClick}
+          cookieSpender={spendCookies}
+        />
+      </div>
+
       <footer>
         <a href="https://www.flaticon.com/free-icons" title="icons">
           All icons created by Freepik - Flaticon

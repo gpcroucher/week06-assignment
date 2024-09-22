@@ -1,13 +1,27 @@
 .upgradeMenu {
-  border: 1px solid brown;
+  border: 3px solid brown;
+  border-radius: 10px;
+  padding: 0.5svw;
+  background-color: burlywood;
   margin-bottom: 1svh;
+  width: 100%;
 }
 
 .upgradeMenu h2 {
   margin-left: 1svw;
-  margin-bottom: 0;
+  margin-top: 0.5svw;
+  margin-bottom: 0.5svw;
 }
 
 .upgradeList {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 0.5svw;
+}
+
+@media (min-width: 800px) {
+  .upgradeList {
+    flex-direction: column;
+  }
 }

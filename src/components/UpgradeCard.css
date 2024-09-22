@@ -1,9 +1,11 @@
 .upgradeCard {
-  margin: 1svw;
+  /* margin: 1svw; */
   border: 2px solid black;
   border-radius: 5px;
   padding: 1svw;
   width: 100%;
+
+  flex-basis: 23%;
 
   display: flex;
   justify-content: space-around;
