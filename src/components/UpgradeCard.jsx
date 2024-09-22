@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import "./UpgradeCard.css";
 
 export default function UpgradeCard(props) {
   const upgrade = props.upgrade;
