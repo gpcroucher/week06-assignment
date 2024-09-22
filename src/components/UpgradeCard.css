@@ -1,5 +1,20 @@
 .upgradeCard {
   margin: 1svw;
   border: 2px solid black;
+  border-radius: 5px;
+  padding: 1svw;
   width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+}
+
+.upgradeCard p {
+  margin: 0;
+  padding: 0;
+}
+
+.upgradeInfo {
+  display: flex;
+  flex-direction: column;
 }

@@ -1,5 +1,6 @@
 .upgradeMenu {
   border: 1px solid brown;
+  margin-bottom: 1svh;
 }
 
 .upgradeMenu h2 {

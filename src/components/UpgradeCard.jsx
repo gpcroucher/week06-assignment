@@ -21,9 +21,11 @@ export default function UpgradeCard(props) {
 
   return (
     <div className="upgradeCard">
-      <p>{upgrade.name}</p>
-      <p>Cost: {upgrade.cost}</p>
       <button onClick={buyUpgrade}>Buy?</button>
+      <div className="upgradeInfo">
+        <p>{upgrade.name}</p>
+        <p>Cost: {upgrade.cost}</p>
+      </div>
     </div>
   );
 }

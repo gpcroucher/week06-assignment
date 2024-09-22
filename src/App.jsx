@@ -93,8 +93,10 @@ function App() {
   */
   return (
     <>
-      <Cookie handleClick={clickCookie} />
-      <CookieDisplay cookies={cookies} />
+      <div className="cookieJarAndDisplay">
+        <Cookie handleClick={clickCookie} />
+        <CookieDisplay cookies={cookies} />
+      </div>
       <UpgradeMenu
         title="CPS Upgrades"
         upgrades={PER_SECOND_UPGRADES}
