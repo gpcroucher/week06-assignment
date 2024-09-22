@@ -2,7 +2,7 @@ import "./App.css";
 import Cookie from "./components/Cookie.jsx";
 import CookieDisplay from "./components/CookieDisplay.jsx";
 import UpgradeMenu from "./components/UpgradeMenu.jsx";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const PER_SECOND_UPGRADES = [
   {
@@ -46,11 +46,29 @@ const PER_CLICK_UPGRADES = [
 ];
 
 function App() {
-  // we need a cookie button, an upgrade menu, and a couple of readouts for cookie count and cookies per second
-  const [cookies, setCookies] = useState(100);
-  const [perSecond, setPerSecond] = useState(0);
-  const [perClick, setPerClick] = useState(1);
+  // initialise states from localStorage or set default values if they're not in localStorage
+  const [cookies, setCookies] = useState(() => {
+    return load().cookies ? load().cookies : 100;
+  });
+  const [perSecond, setPerSecond] = useState(() => {
+    return load().perSecond ? load().perSecond : 0;
+  });
+  const [perClick, setPerClick] = useState(() => {
+    return load().perClick ? load().perClick : 1;
+  });
 
+  /*
+  Memoized functions
+  */
+  const tickCookie = useCallback(() => {
+    setCookies((cookies) => cookies + perSecond);
+    console.log(`Cookie ticked: ${perSecond} added`);
+  }, [perSecond]);
+
+  /*
+  useEffects
+  */
+  // set the 1 second interval - only resets when perSecond changes
   useEffect(() => {
     const interval = setInterval(() => {
       tickCookie();
@@ -59,13 +77,20 @@ function App() {
     return () => {
       clearInterval(interval);
     };
+  }, [tickCookie]);
 
-    function tickCookie() {
-      setCookies((cookies) => cookies + perSecond);
-      console.log(`Cookie ticked: ${perSecond} added`);
-    }
-  }, [perSecond, perClick]);
+  // save variables to local storage when any of them change
+  useEffect(() => {
+    localStorage.setItem("perSecond", perSecond);
+    localStorage.setItem("perClick", perClick);
+    localStorage.setItem("cookies", cookies);
 
+    return; // no clean-up needed
+  }, [perClick, perSecond, cookies]);
+
+  /* 
+  JSX
+  */
   return (
     <>
       <Cookie handleClick={clickCookie} />
@@ -92,6 +117,9 @@ function App() {
     </>
   );
 
+  /* 
+  functions 
+  */
   function clickCookie() {
     setCookies((cookies) => cookies + perClick);
     console.log(`Cookie clicked: ${perClick} added`);
@@ -103,6 +131,14 @@ function App() {
 
   function increasePerSecond(number) {
     setPerSecond(perSecond + number);
+  }
+
+  function load() {
+    return {
+      cookies: Number(localStorage.getItem("cookies")),
+      perSecond: Number(localStorage.getItem("perSecond")),
+      perClick: Number(localStorage.getItem("perClick")),
+    };
   }
 
   function spendCookies(number) {
